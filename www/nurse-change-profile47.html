@@ -1,0 +1,256 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style type="text/css">
+  		.mask {
+		  position:fixed;
+		  left:0;
+		  bottom:0;
+		  z-index:9000;
+		  background-color:#000;
+		  display:none;
+		  height: 100%;
+		  width:100%;
+		}
+  	</style>
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 6 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+ 	<a href="javascript:void(0)" id="user_images_show"></a>
+	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+ 	<a id="tans_to_convtime">Conversation Time</a>
+ 	<a id="tans_to_conftime">Availibility Time</a>
+ 	<!-- <a id="tans_to_practice">Add Practice</a> -->
+ 	<!-- <a id="tans_to_nurse">Nurse</a> -->
+  	<a id="tans_to_physician">Physicians</a>
+  	<a id="tans_to_patients">Patients</a>
+  	<!-- <a id="tans_to_contact">Contact Us</a>
+  	<a id="tans_to_feedback">Feedback</a>
+  	<a id="tans_to_share">Share Remote Health</a>
+  	<a id="tans_to_faq">FAQ</a>
+  	<a id="tans_to_privacy">Privacy Policy</a>
+  	<a id="tans_to_terms">Terms of use</a> -->
+  	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+<div class="page8">
+	<div class="container top_section">
+		<div class="row">
+			<div class="col-sm-12 align-middle top">
+				<a class="float-left heading">NURSE EDIT PROFILE</a>
+				<a class="float-right" id="right_menu" style="width: 0%;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="form-wrapper">
+			<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				 <strong>Error!</strong> Please Try again later.
+				</div>
+			<form action="" class="form" id="doctor_edit_profile_form" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-12 text-center">
+						<img src="images/no-doctor.png" class="img-reponsive img-rounded" id="user_image" width="100">
+					</div>
+				</div>
+				<div class="row ">
+					<div class="col-12 text-center "><br/>
+						<a id="showUploadOptions"><b>Change Image</b></a> 
+						
+					</div>
+				</div>
+				<div class="row" style="padding-top: 10px; display: none;" id="showUploadContainer">
+					<div class="col-6 text-right"  >
+						<a id="imageUpload">Upload</a>
+				    </div>
+				    <div class="col-6 ">
+				    	<a id="imageCapture">Capture</a>
+				    </div>
+				</div>
+
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group focused">
+				      		<label class="form-label" for="f_name">First Name</label>
+				      		<input id="f_name" name="f_name" class="form-input" type="text" required="" />
+				    	</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group focused">
+				      		<label class="form-label" for="l_name">Last Name</label>
+				      		<input id="l_name" name="l_name" class="form-input" type="text" required />
+				    	</div>
+					</div>
+				</div>
+				
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="email">Email</label>
+		      		<input id="email" name="email" class="form-input" type="email" required="" readonly="" />
+		    	</div>
+		    	
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="dob">Date of Birth</label>
+		      		<input id="dob" name="dob" class="form-input" type="text" />
+		    	</div>
+
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="mobile">Mobile No</label>
+		      		<input id="mobile" name="mobile" class="form-input" type="tel" />
+		    	</div>
+		      	
+		      	<div class="form-group">
+		      		<label class="form-label" >Sex</label>
+		      		<div class="form-check-inline">
+			    		
+					  <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="sex" value="m" required="">Male
+					  </label>
+					</div>
+					<div class="form-check-inline">
+					  <label class="form-check-label">
+					    <input name="sex" type="radio" class="form-check-input" value="f">Female
+					  </label>
+					</div>
+					<div class="form-check-inline">
+					  <label class="form-check-label">
+					    <input name="sex" type="radio" class="form-check-input" value="o">others
+					  </label>
+					</div>
+		      	</div>	
+		    	
+		    	<div class="form-group">
+		      		<label class="form-label" >Language Known</label>
+		      		<div id="lang_html">
+			      		<div class="alert alert-danger">
+						  <strong>Please Wait!</strong> 
+						</div>
+					</div>					
+		      	</div>	
+
+
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="physician_id">Identification ID</label>
+		      		<input id="physician_id" name="physician_id" class="form-input" type="text" required=""/>
+		    	</div>
+
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="designation">Designation</label>
+		      		<input id="designation" name="designation" class="form-input" type="text" required=""/>
+		    	</div>
+
+		    	<div class="form-group" style="display: none;">
+		      		<label class="" style="font-size: 25px;" for="specialization_id">Specialization</label>
+		      		<select class="form-input" id="specialization_id" name="specialization_id" required="">
+		      			<option value="">Select Specialization</option>
+		      		</select>
+		    	</div>
+
+		    	<div class="form-group" id="services">
+		      		<label class="" style="font-size: 25px;" for="service_id">Services</label>
+		      		<div id="service_html">
+			      		<div class="alert alert-danger">
+						  <strong>Please Wait!</strong> 
+						</div>
+					</div>	
+		    	</div>
+
+		    	<div class="form-group" id="nurse">
+		      		<label class="" style="font-size: 25px;" for="nurse_type">Type</label>
+		      		<select class="form-input" id="nurse_type" name="nurse_type" >
+		      			<option value="">Please Select</option>
+		      			<option value="jn">Junior Nurse</option>
+		      			<option value="sn">Senior Nurse</option>
+		      		</select>
+		    	</div>
+
+		    	
+		    	<div class="form-group focused">
+		      		<label class="form-label file-up-label" for="certificate">Certificate Upload</label>
+		      		<input id="certificate" name="certificate" class="form-input file_input" type="file" />
+		    	</div>
+
+		    	<div class="form-group focused">
+		      		<label class="form-label file-up-label"> Uploaded Certificate </label>
+		      		<a href="" id="uploaded_cerificate_link"></a>
+		    	</div>
+
+		    	<div class="form-group focused">
+		      		<label class="form-label" for="contact_us_comments">About</label>
+		      		<textarea class="form-input" rows="5" id="about" name="about" required="" style="padding-top: 10px"></textarea>
+		    	</div>
+
+		    	<div class="form-group" style="display: none;">
+		      		<label class="form-label" for="fees">Fees</label>
+		      		Rs. <input id="fees" name="fees" class="form-input" type="text" /> /-
+		    	</div>
+		    	
+		    	<div class="form-group">
+
+
+
+				<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				  <strong>Error!</strong> Please Try again later.
+				</div>
+
+				<div class="alert alert-warning" style="display: none;">
+				  <strong>Please Wait!</strong> System is processing...
+				</div>
+
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="doctor_signup_btn">UPDATE</button>
+		    		<input type="hidden" name="func" value="doctor_update_profile">
+		    		<input type="hidden" name="doctor_id" id="doctor_id" value="">
+		    	</div>
+		    		
+		    	
+		  </form>
+		</div>	
+	</div>
+	<div class="bottom">
+		
+	</div>
+</div>
+ <div class="mask"></div>	
+<!--------------------------->
+<!--------- Page 6 ---------->
+<!--------------------------->
+
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script src="js/page47.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 10 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" >&times;</a>
+ <a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+ 	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+ 	<a id="tans_to_convtime">Conversation Timing</a>
+ 	<a id="tans_to_conftime">Conference Timing</a>
+ 	<a id="tans_to_practice">Add Practice</a>
+	<a id="tans_to_physician">Physicians</a>
+	<a id="tans_to_patients">Patients</a>
+	<!-- <a id="tans_to_contact">Contact Us</a>
+	<a id="tans_to_feedback">Feedback</a>
+	<a id="tans_to_share">Share Remote Health</a>
+	<a id="tans_to_faq">FAQ</a>
+	<a id="tans_to_privacy">Privacy Policy</a>
+	<a id="tans_to_terms">Terms of use</a> -->
+	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page10">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left" > &nbsp;Doctor</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container" style="position: unset; " id="loading_screen">
+			<div style="width: 100%; text-align: center; padding-top: 100px;"> <img src="images/loading.gif"></div>
+		</div>
+		<div class="container" style="position: unset; display: none;" id="content_screen">
+			<div class="row" style="padding-top: 5px;">
+				<div class="col-6 text-center">
+					<img id="doc_img" src="images/docx.jpg" class="img-reponsive img-rounded" style="width: 100px;">
+				</div>
+				<div class="col-16 text-left">
+					<b id="doc_name" style="text-transform: uppercase;">Dr. Lorem Ipsum</b> <br/>
+					<small id="spec"></small><br/>
+					<small id="rating_star">
+						
+					</small><br/>
+					<small id="desig"></small><br/>
+					<small id="age_sex"></small><br/>
+					<small id="email"></small>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<b>Language Known:</b><span id="language_known"></span>
+				</div>
+			</div>
+			<div class="row faded_backcolor timing-fees">
+				<div class="col-6 text-center" style="max-height: 150px; overflow: scroll;">
+					<b>Availability Timing</b><br/>
+					<div id="video_timimg" style="text-align: left;">					
+					</div>
+					<b>Available for chat</b><br/>
+					<div id="chat_timimg" style="text-align: left;">					
+					</div>
+				</div>
+				<div class="col-6 text-center">
+					<b>Fee</b><br/>
+					<small id="visit"></small><br/><br/>
+					<div class="button3" style="padding-bottom: 5px; ">
+						<!-- <a id="trans_to_chat">Conversation</a> -->
+					</div>	
+					<div class="button1">
+						<!-- <a href="" >Call</a> -->
+					</div>				
+				</div>
+			</div>
+			<div class="row " style="max-height: 200px; overflow: scroll; padding-bottom: 10px;">
+				<div class="col-12 text-center">
+					<h3>About Doctor</h3>
+					<div class="text-justify" id="about_doctor_text" style="max-height: 200px; overflow: scroll;"></div>
+				</div>	
+			</div>
+			<div class="row doc-addr" >
+				<div class="col-12 text-center" id="read_all_reviews">
+					<a style="color:#9b113a;" id="view_review"><b>Read all reviews</b></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="button1">
+						<a href="doctor-change-profile16.html"> Edit Profile</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>		
+
+	</div>
+	<div id="mask"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 9 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script src="js/page29.js"></script>  	
+</body>
+</html> 
+ 

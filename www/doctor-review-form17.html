@@ -1,0 +1,337 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #a52727;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 17 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" >&times;</a>
+ <a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+ 	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+	<a id="tans_to_physician">Physicians</a>
+	<!-- <a id="tans_to_contact">Contact Us</a>
+	<a id="tans_to_feedback">Feedback</a>
+	<a id="tans_to_share">Share Remote Health</a>
+	<a id="tans_to_faq">FAQ</a>
+	<a id="tans_to_privacy">Privacy Policy</a>
+	<a id="tans_to_terms">Terms of use</a> -->
+	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page15">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left heading">MAKE REVIEW</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container" style="position: unset;">
+			<form action="" class="form" id="rating_submit_form" method="post">
+				<div class="row">
+					<div class="col-12 text-center">
+						<img id="doc_img" src="images/docx.jpg" class="img-reponsive img-rounded" style="width: 80px;">
+					</div>
+				</div>
+				<div class="row ">
+				<div class="col-12 text-center ">
+					<b id="doc_name" style="text-transform: uppercase;"></b> <br/>
+					<small id="rating_star">
+						
+					</small><br/>
+					<small id="desig"></small><br/>
+					<small id="age_sex"></small><br/>
+					<small id="email"></small>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 ">
+					<div class="form-wrapper">
+			<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+				</div>			
+				<div class="alert alert-warning" style="display: none;">
+				  <strong>Please Wait!</strong> System is processing....
+				</div>		    	
+		    	<div class="row mt-3" style="color: #9b113a">
+									<div class="col-12">
+										<p><b id="rate_title">Rate Doctor</b></p>
+										<div class="slidecontainer">
+											<input type="range" min="1" max="5" value="3" required="" class="slider" id="rating" name="rating">
+  											<br/><br/>
+  											<div style="width: 100%; text-align: center;" id="rating_val_show"><img src="images/star.png" class="star"></div>
+										</div>
+									</div>
+								</div>
+		    	
+		    	<div class="form-group">
+		      		<label class="form-label" for="comments" style="color: #9b113a">Comments</label>
+		      		<textarea class="form-input" rows="5" id="comments" style="padding-top: 10px" required=""></textarea>
+		    	</div>
+
+		    	
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="doctor_review_btn">Submit</button>
+		    		<input type="hidden" name="doctor_id" id="doctor_id">	    		
+		    	</div>
+		 
+		</div>	
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div id="mask"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 17 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>  
+  	<script type="text/javascript">
+
+  		if(storage.getItem("logged_user_type") == 'd')
+	 		$("#rate_title").html("Rate Doctor");
+	 	else if(storage.getItem("logged_user_type") == 'jd')
+	 		$("#rate_title").html("Rate Doctor");
+	 	else
+	 		$("#rate_title").html("Rate Nurse");
+
+  		var slider = document.getElementById("rating");
+		var output = document.getElementById("rating_val_show");
+		output.innerHTML = '';
+		for(var i = 1; i <= slider.value ; i++)
+		{
+			output.innerHTML +='<img src="images/star.png" class="star">&nbsp;';
+		}
+
+		slider.oninput = function() {
+			output.innerHTML = '';
+			for(var i = 1; i <= this.value ; i++)
+			{
+				output.innerHTML +='<img src="images/star.png" class="star">&nbsp;';
+			}
+		} 
+
+		$( document ).ready(function() {
+			var urlParams = new URLSearchParams(window.location.search)
+			var id = urlParams.get('id');
+			var appt_id = urlParams.get('appt_id');
+
+			if(id)
+			{
+			$.post( api_url+"get_doctor_details.php", {func: "get_doctor_data_by_id", doc_id: id})
+			.done(function(data){
+			 	data = JSON.parse(data);
+			 	
+			 	var sex = "";
+			 	if(data.data.sex == "m") sex = "Male";
+			 	else if(data.data.sex == "f") sex = "Female";
+			 	
+			 	var image =data.data.image;
+			 	if(!image) image = "no-doctor.png";
+			 	
+		 		image = site_url+'images/doctor_image/'+image;
+
+		 		if(storage.getItem("logged_user_type") == 'd')
+			 		$("#doc_name").html("Dr. "+ data.data.f_name+ " " +data.data.l_name);
+			 	else if(storage.getItem("logged_user_type") == 'jd')
+			 		$("#doc_name").html("Dr. "+ data.data.f_name+ " " +data.data.l_name);
+			 	else
+			 		$("#doc_name").html( data.data.f_name+ " " +data.data.l_name);
+
+			 	
+			 	$("#desig").html(data.data.designation);
+			 	$("#age_sex").html(data.data.age +"Yr &nbsp; "+ sex);
+				$("#email").html(data.data.email_id);
+				$("#about_doctor_text").html(data.data.about);
+				$("#doc_img").attr("src", image);		
+				$("#doctor_id").val(id);
+				var reviewCount = 0;
+				var ratingValue = 0;
+				for(var key in data.data.review)
+				{
+					ratingValue = ratingValue + parseInt(data.data.review[key].rating);
+					reviewCount++;
+				}
+				
+				ratingValue = ratingValue/reviewCount;
+				ratingValue = parseInt(ratingValue);
+				if(!ratingValue ) ratingValue = 1;
+				
+				$ratingHtml ="";
+				for( var x = 1 ;x <= ratingValue; x++)
+				{
+					$ratingHtml +='<img src="images/star.png" class="star">';
+				}
+				$("#rating_star").html($ratingHtml);
+
+			});
+			}
+			else if(appt_id){
+				$.post( api_url+"get_doctor_details.php", {func: "get_doctor_data_by_appt_id", appt_id: appt_id})
+			.done(function(data){
+			 	data = JSON.parse(data);
+			 	
+			 	var sex = "";
+			 	if(data.data.sex == "m") sex = "Male";
+			 	else if(data.data.sex == "f") sex = "Female";
+			 	
+			 	var image =data.data.image;
+			 	if(!image) image = "no-doctor.png";
+			 	
+		 		image = site_url+'images/doctor_image/'+image;
+
+			 	$("#doc_name").html("Dr. "+ data.data.f_name+ " " +data.data.l_name);
+			 	$("#desig").html(data.data.designation);
+			 	$("#age_sex").html(data.data.age +"Yr &nbsp; "+ sex);
+				$("#email").html(data.data.email_id);
+				$("#about_doctor_text").html(data.data.about);
+				$("#doc_img").attr("src", image);		
+				$("#doctor_id").val(id);
+				var reviewCount = 0;
+				var ratingValue = 0;
+				for(var key in data.data.review)
+				{
+					ratingValue = ratingValue + parseInt(data.data.review[key].rating);
+					reviewCount++;
+				}
+				
+				ratingValue = ratingValue/reviewCount;
+				ratingValue = parseInt(ratingValue);
+				if(!ratingValue ) ratingValue = 1;
+				
+				$ratingHtml ="";
+				for( var x = 1 ;x <= ratingValue; x++)
+				{
+					$ratingHtml +='<img src="images/star.png" class="star">';
+				}
+				$("#rating_star").html($ratingHtml);
+
+			});
+			}
+
+			$("#rating_submit_form").submit(function(e){
+				e.preventDefault();
+
+				$("#doctor_review_btn").prop('disabled', true);
+				$("#doctor_review_btn").hide('slow');
+				$(".alert-warning").show();
+				$(".alert-success").slideUp();
+				$(".alert-danger").slideUp();
+
+				$.post( api_url+"get_doctor_details.php", {
+					func: "submit_review", 
+					doctor_id: $("#doctor_id").val(),
+					user_id: storage.getItem("logged_user_id"),
+					rating: $("#rating").val(),
+					comments:$("#comments").val()
+				})
+				.done(function(data){
+					console.log(data);
+					data = JSON.parse(data);
+					$("#doctor_review_btn").prop('disabled', false);
+					$(".alert-warning").hide();
+
+					$("#comments").val("");	 
+			    	$("#rating").val(3);	 
+			    	$("#rating_val_show").html('<img src="images/star.png" class="star">&nbsp;<img src="images/star.png" class="star">&nbsp;<img src="images/star.png" class="star">&nbsp;');	
+			    	
+
+					if(data.success)
+		    		{	
+						$(".alert-success").html("<strong>Success:</strong>"+ data.msg).slideDown();
+						$(".alert-danger").slideUp();
+				    	setTimeout(function(){
+						    $(".alert-success").slideUp();
+						    window.location.href="doctor-profile10.html?id="+$("#doctor_id").val();
+						}, 5000);
+					}
+					else
+				    {
+				    	$(".alert-danger").html("<strong>Error:</strong>"+ data.msg).slideDown();
+				    	$(".alert-success").slideDown();
+				    	setTimeout(function(){
+						   $(".alert-danger").slideUp();
+						}, 3000);
+				    }
+
+				})
+
+			})
+		})
+
+
+  	</script>		
+</body>
+</html> 
+ 

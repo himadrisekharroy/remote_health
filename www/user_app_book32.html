@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Remote Health</title>
+      <meta name="description" content="Remote Health">
+      <meta name="author" content="Rituparna">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+      <link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="css/styles.css?v=1.0">
+      <link rel="stylesheet" href="css/calendarview.css">
+      <style>
+         div.calendar table {
+         width: 100%;
+         }
+         #mask_layer {
+		 	position:absolute;
+		 	left:0;
+		 	top:0;
+		 	z-index:9000;
+		 	background-color:#000;
+		 	display:none;
+		 	opacity: 0.8;
+  			filter: alpha(opacity=80);
+  			height: 100%;
+  			width: 100%;
+		}			
+      </style>
+   </head>
+   <body>
+      <!--------------------------->
+      <!--------- Page 32 ---------->
+      <!--------------------------->
+      <div id="mySidenav" class="sidenav">
+         <a href="javascript:void(0)" class="closebtn" >&times;</a>
+         <a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+         <a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+         <a href="member-profile9.html">My Profile</a>
+         <a href="change-password22.html">Change Password</a>
+         <a href="user_page7.html">Physicians</a>
+        <!--  <a id="tans_to_nurse">Nurse</a>
+         <a href="contact-us14.html">Contact Us</a>
+         <a href="send-feedback-form18.html">Feedback</a>
+         <a href="hare19.html">Share Remote Health</a>
+         <a href="faq21.html">FAQ</a>
+         <a href="privacy-policy12.html">Privacy Policy</a>
+         <a href="terms-use13.html">Terms of use</a> -->
+         <a id="signout_link" style="color: red !important">Signout</a>
+      </div>
+      <div class="page10">
+         <div class="container top_section">
+            <div class="row">
+               <div class="col-sm-12 align-middle top">
+                  <a class="float-left" style="width: 90%"> &nbsp;BOOK APPOINTMENT</a>
+                  <a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+               </div>
+            </div>
+         </div>
+         <div class="middle">
+            <div class="container" style="position: unset; display: none;" id="loading_screen">
+               <div style="width: 100%; text-align: center; padding-top: 100px;"> 
+               	<img src="images/loading.gif">
+               </div>
+            </div>
+            <div class="container" id="content_screen">
+               <div class="row">
+                  <div class="col-12">
+                     <div id="embeddedCalendar"></div>
+                  </div>
+               </div>
+               <div class="row ">
+                  <div class="col-12 text-center">
+                     <b>Select 15 min slot</b>						
+                  </div>
+               </div>
+               <div class="row avl_time">
+                  <div class="col-sm-12" id="time_slots">
+                     <div class="alert alert-warning" >
+                        <strong>Wait!</strong> Processing time.....
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <form name="app_book_form" id="app_book_form" method="get" action="payment_video_chat.html">
+            <input type="hidden" name="app_year" id="app_year">
+            <input type="hidden" name="app_month" id="app_month">
+            <input type="hidden" name="app_day" id="app_day">
+            <input type="hidden" name="app_date" id="app_date">
+            <input type="hidden" name="app_time" id="app_time">
+            <input type="hidden" name="app_user_id" id="app_user_id">
+            <input type="hidden" name="app_doc_id" id="app_doc_id">
+         </form>
+         <div class="bottom" id="booked_bottom_link">
+            <div class="row">
+               <div class="col-12 bottom-right">
+                  <a id="appointment_book_next" style="padding: 5%;" ><font>Next</font> &nbsp; <i class="fa fa-chevron-right" aria-hidden="true"></i></a>				
+               </div>
+            </div>
+         </div>
+         <div class="bottom" id="reschedule_bottom_link" style="display: none;">
+            <div class="row">
+               <div class="col-6 bottom-left">
+                  <a href="user_page7.html?appt_confirm=1" style="padding: 10%;" ><i class="fa fa-times" aria-hidden="true"></i>&nbsp; <font>Cancel</font> </a>	 
+               </div>
+               <div class="col-6 bottom-right">
+                  <a id="appointment_book_reschedule" style="padding: 10%;" ><font>Reschedule</font> </a>				
+               </div>
+            </div>
+         </div>
+         
+         <div id="mask"></div>
+         <div id="mask_layer"></div>
+      </div>
+      <!--------------------------->
+      <!--------- Page 32 ---------->
+      <!--------------------------->
+      <script src="js/jquery-3.2.1.min.js"></script>
+      
+      <script type="text/javascript">jQuery.noConflict();</script>
+      <script src="kendo/js/kendo.mobile.min.js"></script>
+      <script src="css/bootstrap-4.1.2/popper.js"></script>
+      <script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+       <script src="js/index.js"></script> 
+      <script src="owlcarousel/owl.carousel.js"></script>
+      <script src="js/scripts.js"></script>
+      <script src="js/prototype.js"></script>
+      <script src="js/calendarview.js"></script>
+      <script src="js/page32.js"></script>
+      <!-- <script type="text/javascript" src="cordova.js"></script>  -->
+   </body>
+</html>

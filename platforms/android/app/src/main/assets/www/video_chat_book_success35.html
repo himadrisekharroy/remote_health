@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Remote Health</title>
+      <meta name="description" content="Remote Health">
+      <meta name="author" content="Rituparna">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+      <link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="css/styles.css?v=1.0">
+      <link rel="stylesheet" href="css/calendarview.css">
+      
+   </head>
+   <body>
+      <!--------------------------->
+      <!--------- Page 32 ---------->
+      <!--------------------------->
+
+      <div class="page10">
+         <div class="container top_section">
+            <div class="row">
+               <div class="col-sm-12 align-middle top">
+                  <a class="float-left" style="width: 90%"> &nbsp;BOOKING CONFIRMATION</a>
+                  <a class="float-right" id="right_menu">&nbsp;</a>
+               </div>
+            </div>
+         </div>
+         <div class="middle">
+            <div class="container" style="position: unset; " id="loading_screen">
+               <div style="width: 100%; text-align: center; padding-top: 100px;"> 
+               	<img src="images/loading.gif">
+               </div>
+               <div class="form-wrapper">
+               	<br/>
+					<div class="alert alert-success" >
+					  <strong>Success!</strong> Booking Confirm, Please wait !!!.....
+					</div>
+					<div class="alert alert-danger" >
+					  Do not press or tap <strong>Back Button!</strong> 
+					</div>
+				</div>
+            </div>
+         </div>
+         </div>
+        
+         <div class="bottom" id="booked_bottom_link">
+            <div class="row">
+               <div class="col-12 bottom-right">
+                  <a id="" style="padding: 5%;" ><font>&nbsp;</font> &nbsp; </a>				
+               </div>
+            </div>
+         </div>
+                  
+      </div>
+      <!--------------------------->
+      <!--------- Page 32 ---------->
+      <!--------------------------->
+      <script src="js/jquery-3.2.1.min.js"></script>
+      
+      <script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+      <script src="js/index.js"></script> 
+      <script src="js/scripts.js"></script>
+      <script type="text/javascript">
+      	jQuery(document).ready(function($) {
+		    var urlParams = new URLSearchParams(window.location.search);
+		    var appt_id = urlParams.get('appt_id');
+
+		    $.post( api_url+"get_video_chat_details.php", {
+                func: "get_appt_details", 
+                appt_id: appt_id
+            })
+            .done(function(data){
+                console.log(data);
+                data = JSON.parse(data);
+                if(data.success)
+                { 
+                   	var monthNames = ["January", "February", "March", "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
+                	
+                	var doctor_name = "dr. "+ data.data.f_name +" "+ data.data.l_name;
+                	doctor_name = doctor_name.toUpperCase();
+
+                	var doctor_image = data.data.image;
+                	if(!doctor_image) doctor_image = 'no-doctor.png';
+                	cordova.plugins.notification.local.schedule({
+                		id: 1,
+					    title: 'Appointment Booking Details',
+					    text: doctor_name +'\n'+data.data.designation+"\n"+data.data.title+"\n"+data.data.day +" "+ monthNames[parseInt(data.data.month)]+" "+data.data.year+ " @ "+data.data.time,					    
+					    icon: site_url+'images/doctor_image/'+doctor_image
+					});
+					window.location.href= "user_page7.html?appt_confirm=1";
+                }
+            	else
+            	{
+            		window.location.href= "user_page7.html?appt_confirm=1";
+            	}
+            })
+		})
+      </script>
+      <script type="text/javascript" src="cordova.js"></script> 
+   </body>
+</html> 

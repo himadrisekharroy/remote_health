@@ -1,0 +1,62 @@
+ 
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body style="magin:0 auto; padding-top: 100px; ">
+	<div style="width: 100%; text-align: center;">
+<input type="button" name="pay" id="pay" value="PAY" style="padding: 50px; font-size: 20px;">
+<div id="temp_text" style="color: red; font-size: bold;">Please click on pay to make demo payment</div>
+</div>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script src="js/page25.js"></script>  
+
+	<script type="text/javascript">
+		var urlParams = new URLSearchParams(window.location.search)
+	var sid = urlParams.get('sid');
+	var doc_id = urlParams.get('docid');
+
+$("#pay").click(function(){
+	$("#pay").hide();
+	$.post( api_url+"get_text_chat_details.php", {func: "temp_subscribe", user_id: storage.getItem("logged_user_id"), sid:sid})
+	.done(function(data){
+		console.log(data);
+			//alert(data);
+		data = JSON.parse(data);
+		if(data.success)
+		{
+			window.location.href="patient-chat24.html?id="+doc_id;
+		}
+		else
+		{
+			window.location.href="message-subscription25.html?id="+doc_id;
+		}
+	})
+})
+	
+
+	</script>
+</body>
+</html> 
+ 
+

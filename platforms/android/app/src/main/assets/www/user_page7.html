@@ -1,0 +1,492 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<script src="js/check-login.js"></script>
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style type="text/css">
+  		<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #a52727;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.reschedule {
+	-moz-box-shadow: 0px 10px 14px -7px #276873;
+	-webkit-box-shadow: 0px 10px 14px -7px #276873;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+	background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+	background-color:#599bb3;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff !important;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:7px 7px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.pres_dwn_btn{
+	-moz-box-shadow: 0px 10px 14px -7px #276873;
+	-webkit-box-shadow: 0px 10px 14px -7px #276873;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f90000), color-stop(1, #d02828));
+	background:-moz-linear-gradient(top, #f90000 5%, #d02828 100%);
+	background:-webkit-linear-gradient(top, #f90000 5%, #d02828 100%);
+	background:-o-linear-gradient(top, #f90000 5%, #d02828 100%);
+	background:-ms-linear-gradient(top, #f90000 5%, #d02828 100%);
+	background:linear-gradient(to bottom, #f90000 5%, #d02828 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f90000', endColorstr='#d02828',GradientType=0);
+	background-color:#f90000;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff !important;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:7px 7px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.cancel
+{
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bf4343), color-stop(1, #d61616));
+	background:-moz-linear-gradient(top, #bf4343 5%, #d61616 100%);
+	background:-webkit-linear-gradient(top, #bf4343 5%, #d61616 100%);
+	background:-o-linear-gradient(top, #bf4343 5%, #d61616 100%);
+	background:-ms-linear-gradient(top, #bf4343 5%, #d61616 100%);
+	background: linear-gradient(to bottom, #bf4343 5%, #d61616 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf4343', endColorstr='#d61616',GradientType=0);
+}
+.boxes  {
+  	position:absolute;
+  	top:0;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  	margin: auto;
+ 	width:330px;
+  	height:300px;  	
+  	z-index:9999;
+  	background-color:#FFFFFF; 	
+  	display:none;
+}
+.mask_note {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+  height: 100%;
+  width:100%;
+}
+.lb_bottom
+{
+	border-top:2px solid #599bb3;
+}
+.lb_bottom a
+{
+	text-decoration: none;
+    color: #599bb3;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.lb_bottom_left
+{
+	float: left;
+	width: 49%;
+	border-right: 1px solid #599bb3;
+}
+.lb_bottom_left a
+{
+	color: #9b113a;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+}
+ .lb_bottom_right
+ {
+ 	float: right;
+	width: 50%;
+ } 	
+.lb_bottom_right a
+{
+	text-decoration: none;
+	color: #599bb3;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+#pres_down_btn{
+		border: 1px solid #c51515;
+    padding: 10px;
+    color: #fff;
+    background: red;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: none;
+}
+</style>
+  	</style>
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 7 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+	
+	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+	<a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+ 	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+	<a id="tans_to_physician">Physicians</a>
+	<!-- <a id="tans_to_nurse">Nurse</a> 
+	<a id="tans_to_contact">Contact Us</a>
+	<a id="tans_to_feedback">Feedback</a>
+	<a id="tans_to_share">Share Remote Health</a>
+	<a id="tans_to_faq">FAQ</a>
+	<a id="tans_to_privacy">Privacy Policy</a>
+	<a id="tans_to_terms">Terms of use</a>-->
+	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page7">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left">Specialists</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs">
+					<li><a class="tab_link active" id="physician_search">Physician <br/> Search</a></li>
+					<li><a class="tab_link" id="personal_health">Personal <br/> Health</a></li>
+					<li><a class="tab_link" id="appointment_history">Appointment <br/> History</a></li>			
+				</ul>
+			</div>
+			<div class="row" id="seach_input">
+				<div class="col-sm-8 float-left" style="width: 90%; padding-left:0px; padding-right: 0px; ">
+					<input id="search_doctor" class="form-input" type="text" required="" placeholder="Search By Name / Title / Speciality" />
+				</div>
+				<div class="col-sm-2 float-right doctor_search_link" >
+					<a href=""><i class="fa fa-search " aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container search_container" style="display: none;" id="search_content">
+			<div class="alert alert-warning" >
+			  <strong>Search !!! </strong> Use Name, Designation, Mobile No, Email 
+			</div>
+		</div>
+
+		<div class="container" style="position: unset;" id="non_search_content">
+			<div class="row tab_container" id="physician_search_container">
+				<div class="col-sm-12" id="specialization_container">
+					<div style="width: 100%; text-align: center; padding-top: 100px;"> <img src="images/loading.gif"></div>
+				</div>
+			</div>
+			
+			<div class="row tab_container" id="personal_health_container" style="display: none;">
+				<div class="col-sm-12">
+					<div class="alert alert-success" style="display: none;">
+				  		<strong>Success!</strong> Indicates a successful or positive action.
+					</div>
+					<div class="alert alert-danger" style="display: none;">
+				  		<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+					</div>
+					<div class="form-wrapper">
+						<form action="" class="form" id="personal_health_form" method="post">
+								<div id="personal_health_qns">
+									<div style="width: 100%; text-align: center; "> <img src="images/loading.gif"></div>
+								</div>
+
+
+
+								<div class="row faded_backcolor mt-3" id="general_feel_container" style="color: #9b113a; display: none;">
+									<div class="col-12">
+										<p><b>How healthy do you feel in general?</b></p>
+										<div class="slidecontainer">
+											<input type="range" min="1" max="10" value="5" class="slider" id="general_feel" name="general_feel">
+  											<p>Value: <span id="general_feel_val_show"></span></p>
+										</div>
+									</div>
+								</div>
+								<div class="alert alert-success" style="display: none;">
+								  <strong>Success!</strong> Indicates a successful or positive action.
+								</div>
+								<div class="alert alert-danger" style="display: none;">
+								  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+								</div>
+
+								<div class="alert alert-warning" style="display: none;">
+								  <strong>Please Wait!</strong> System is processing...
+								</div>
+								<div class="form-group login-button">
+									<button type="button" class="btn btn-success" id="share_with_doc" style="padding: 6px;">Share with Doctors</button>
+						    		<button type="submit" style="padding: 6px;" class="btn  btn-danger" id="personal_health_submit_btn">Submit</button>
+						    		
+						    	</div>
+						    	<input type="hidden" name="func" id="func" value="save_personal_health_data">
+						    	<input type="hidden" name="logger_user_id" id="logger_user_id" value="">
+							
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row tab_container" id="appointment_history_container" style="display: none;">
+				<div class="col-sm-12" >
+					<div class="text-center">
+						<div class="btn-group" id="status" data-toggle="buttons">
+			            	<label class="btn btn-default btn-on btn-lg active">
+		              			<input type="radio" value="1" name="appts_type" checked="checked">Upcomming
+		              		</label>
+			              	<label class="btn btn-default btn-off btn-lg">
+			              		<input type="radio" value="0" name="appts_type">Past
+			              	</label>
+			            </div>
+		        	</div>
+		        	<div class="upcommong_appts" id="upcommong_appts">
+						<!-- <div class="alert alert-danger" style="display: none" >
+							<strong>Warning!</strong> No appointment history found!!!
+						</div>
+						<ul class="list-group inner">
+			                    <li class="list-group-item">			                    	
+			                    	<div class="row doctor-details">                    		
+				                    	<div class="col-2 doctors">
+							             	<img src="images/docx.jpg"  class="img-reponsive img-rounded" />
+							           	</div>
+							           	<div class="col-8">
+							           		<b>Dr. Lorem Ipsum</b><br/>
+							           		<small>MBBS DRC FRC</small><br/>
+							           	</div>
+							           	<div class="col-2">
+							           		<small>$500</small><br/>
+							           </div>
+							       	</div>
+							       	<div class="row doctors-link">
+							       		<div class="col-12">
+							       			<small><b>12th Feb 2019</b> @ <b>10.35 AM</b></small>
+							       		</div>							       		
+							       	</div>
+							   		
+			                    </li>
+			                    <li class="list-group-item">			                    	
+			                    	<div class="row doctor-details">                    		
+				                    	<div class="col-2 doctors">
+							             	<img src="images/docx.jpg"  class="img-reponsive img-rounded" />
+							           	</div>
+							           	<div class="col-8">
+							           		<b>Dr. Lorem Ipsum</b><br/>
+							           		<small>MBBS DRC FRC</small><br/>
+							           	</div>
+							           	<div class="col-2">
+							           		<small>$500</small><br/>
+							           </div>
+							       	</div>
+							       	<div class="row doctors-link">
+							       		<div class="col-12">
+							       			<small><b>12th Feb 2019</b> @ <b>10.35 AM</b></small>
+							       		</div>							       		
+							       	</div>
+							   		
+			                    </li>
+			                </ul>				       	 -->
+					</div>
+
+					<div class="recent_appts" id="recent_appts" style="display: none;">
+						<!-- <div class="alert alert-danger" style="display: none" >
+							<strong>Warning!</strong> No appointment history found!!!
+						</div>
+						<ul class="list-group inner">
+			                    <li class="list-group-item">			                    	
+			                    	<div class="row doctor-details">                    		
+				                    	<div class="col-2 doctors">
+							             	<img src="images/docx.jpg"  class="img-reponsive img-rounded" />
+							           	</div>
+							           	<div class="col-8">
+							           		<b>Dr. Lorem Ipsum</b><br/>
+							           		<small>MBBS DRC FRC</small><br/>
+							           		<small><b>12th Feb 2019</b> @ <b>10.35 AM</b></small>
+							           	</div>
+							           	<div class="col-2">
+							           		<small>$500</small><br/>
+							           </div>
+							       	</div>
+							       	<div class="row doctors-link">
+							       		<div class="col-12">
+							       			<a href=""><small>View Details </small></a>
+							       		</div>							       		
+							       	</div>
+							   		
+			                    </li>
+			                    <li class="list-group-item">			                    	
+			                    	<div class="row doctor-details">                    		
+				                    	<div class="col-2 doctors">
+							             	<img src="images/docx.jpg"  class="img-reponsive img-rounded" />
+							           	</div>
+							           	<div class="col-8">
+							           		<b>Dr. Lorem Ipsum</b><br/>
+							           		<small>MBBS DRC FRC</small><br/>
+							           		<small><b>12th Feb 2019</b> @ <b>10.35 AM</b></small>
+							           	</div>
+							           	<div class="col-2">
+							           		<small>$500</small><br/>
+							           </div>
+							       	</div>
+							       	<div class="row doctors-link">
+							       		<div class="col-12">
+							       			<a href=""><small>View Details </small></a>
+							       		</div>							       		
+							       	</div>
+							   		
+			                    </li>
+			            </ul>	 -->			       	
+					</div>
+				</div>
+			</div>
+		</div>		
+
+	</div>
+	<div id="prev_appt_note" class="boxes">
+		<div style="color: #9b113a; font-size: 16px; padding:10px 10px; font-weight: bold; border-bottom: 3px solid #599bb3">
+			Note
+		</div>
+		<div style="text-align: center; padding-top: 10px;">
+			<img src="http://remotehealth.org/images/user_images/avatar.png" id="lb_user_image" style="height: 50px;"><br/>
+			<span id="lb_user_name">Name</span>
+		</div>
+		<div style="text-align: center; padding-bottom: 10px;">
+			<textarea style="width: 85%; height: 110px" id="note_text" readonly=""></textarea>
+			
+		</div>
+		
+		<div class="lb_bottom" >			
+			<div class="lb_bottom_right">
+				<a href="javascript:void(0)" name="modal" onclick="closebox()">CLOSE</a>			
+			</div>
+		</div>
+     
+    </div>
+    <div id="pres_lb" class="boxes">
+		<div style="color: #9b113a; font-size: 16px; padding:10px 10px; font-weight: bold; border-bottom: 3px solid #599bb3">
+			Prescription
+		</div>
+		<div style="text-align: center; padding-top: 15px;">
+			<img src="http://remotehealth.org/images/user_images/avatar.png" id="pres_lb_user_image" style="height: 50px;"><br/>
+			<span id="pres_lb_user_name">Name</span>
+		</div>
+		<div style="text-align: center; padding-bottom: 10px;">
+			
+			<b id="pres_note_text" style="padding: 20px;"></b>
+			<br/>
+			<br/>
+			<a href="javascript:void(0)" id="pres_down_btn" onclick="download_pres();">Download Prescription</a>	
+			<input type="hidden" name="base_pres" id="base_pres">
+			<br/>
+			<br/>		
+		</div>
+
+		<div class="lb_bottom" >			
+			<a href="javascript:void(0)" name="modal" onclick="closebox()">CLOSE</a>
+		</div>
+     
+    </div>
+	<div id="mask"></div>
+	<div class="mask_note"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 7 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>  
+  	<script type="text/javascript">
+  		var slider = document.getElementById("general_feel");
+		var output = document.getElementById("general_feel_val_show");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function() {
+		  output.innerHTML = this.value;
+		}  		
+  	</script>	
+  	<script src="js/page7.js"></script>
+</body>
+</html> 

@@ -1,0 +1,5 @@
+// replace these values with those generated in your TokBox Account
+var apiKey 			= 	"46266712";
+var sessionId 		= 	"1_MX40NjI2NjcxMn5-MTU1MzA4MzUxNjYyMH5XWVRKSWJOVkdTdlpoeTM4eTVWM2hleUZ-fg";
+var token 			= 	"T1==cGFydG5lcl9pZD00NjI2NjcxMiZzaWc9MzMxYmRmYzhiY2RjYWFhNzY1ZjFjZjI3OTlhMzkzYjUzYzg4NDAyYTpzZXNzaW9uX2lkPTFfTVg0ME5qSTJOamN4TW41LU1UVTFNekE0TXpVeE5qWXlNSDVYV1ZSS1NXSk9Wa2RUZGxwb2VUTTRlVFZXTTJobGVVWi1mZyZjcmVhdGVfdGltZT0xNTUzMDgzNTg1Jm5vbmNlPTAuODIyMzQzNDkzNzE0MDU1JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE1NTMxNjk5ODMmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=";
+var project_secreat	=	"c936cf3e4456dcc988df8c8be02611f0a3a9576f";

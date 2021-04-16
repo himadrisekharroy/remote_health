@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<script src="js/check-login.js"></script> 
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 9 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+  	<a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+ 	<a id="tans_to_practice">Add Practice</a>
+  	<a id="tans_to_physician">Physicians</a>
+  	<a id="tans_to_patients">Patients</a>
+  	<!-- <a id="tans_to_contact">Contact Us</a>
+  	<a id="tans_to_feedback">Feedback</a>
+  	<a id="tans_to_share">Share Remote Health</a>
+  	<a id="tans_to_faq">FAQ</a>
+  	<a id="tans_to_privacy">Privacy Policy</a>
+  	<a id="tans_to_terms">Terms of use</a> -->
+  	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page9">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left">Profile</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container" style="position: unset;">
+			<div class="row faded_backcolor">
+				<div class="col-12 text-center" id="user_image">
+					<img src="images/docx.jpg" class="img-reponsive img-rounded">
+				</div>
+			</div>
+
+			<div class="row faded_backcolor">
+				<div class="col-12 text-center ">
+					<b id="user_name">Mr. Lorem Ipsum</b> <br/>
+					<small id="age_sex">32 Yr &nbsp; Male</small><br/>
+					<small id="email">axfu.yu@hnhhj.in</small><br/>
+					<small id="ph">axfu.yu@hnhhj.in</small>
+				</div>
+			</div>
+			<div class="row ">
+				<h3>Appointment List</h3>
+				<div class="col-12" id="err_msg"></div>
+				<div class="col-12 prev_appts">
+					<div id="upcommong_appts"></div>
+					<div id="recent_appts"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="button1">
+						<a id="tans_to_make_appointment"> Make Appointment</a>
+					</div>
+					<div class="button2">
+						<a id="trans_to_change_profile"> Edit Profile</a>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+	</div>
+	<div id="mask"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 9 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script> 
+  	<script type="text/javascript">
+  		$( document ).ready(function() {
+
+  			var image = '<img src="'+site_url+'images/user_images/'+storage.getItem("logged_user_image") +'"  class="img-reponsive img-rounded" width="100"/>';
+
+  			var birthdate = new Date(storage.getItem("logged_user_dob"));
+			var cur = new Date();
+			var diff = cur-birthdate; // This is the difference in milliseconds
+			var age = Math.floor(diff/31557600000);
+
+			var sex ="";
+			if(storage.getItem("logged_user_sex") == "m")
+				sex ="Male";
+			else
+				sex ="Female";
+
+  			$("#user_image").html(image);
+  			$("#user_name").html(storage.getItem("logged_user_name"));
+  			$("#age_sex").html(age+"Year "+sex);
+  			$("#email").html(storage.getItem("logged_user_email"));
+  			$("#ph").html(storage.getItem("logged_user_ph"));
+
+
+  			var loadingHtml = 	'<div class="alert alert-warning" >';
+			loadingHtml +=			'<strong>Wait!</strong> Processing time....';
+			loadingHtml +=		'</div>';
+			$("#err_msg").html(loadingHtml);
+			
+			var ct= new Date();
+			var h = ct.getHours();
+			var m = ct.getMinutes();
+			var s = ct.getSeconds();
+			if(h < 10) h = "0"+h; 
+			if(m < 10) m = "0"+m;
+			if(s < 10) s = "0"+s;
+
+  			$.post( api_url+"get_video_chat_details.php", 
+			{ 
+				func: "get_user_appointments", 
+				user_id: storage.getItem("logged_user_id"),
+				today: new Date().toLocaleDateString(),
+				current_time: h + ":" + m + ":" + s
+			})
+		.done(function( data ) {
+		    //alert( "Data Loaded: " + data );
+		    var months_arr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		    console.log(data);
+		    data = JSON.parse(data);
+		    if(data.upcomming.success)
+		    {
+		    	var appt_html ='<ul class="list-group inner">';
+		    	var counter =0;
+		    	for(var key in data.upcomming.data)
+			 	{
+			 		appt_html +='<li class="list-group-item">';
+	                appt_html +='	<div class="row doctor-details">';                    		
+	                appt_html +='    	<div class="col-2 doctors">';
+				    appt_html +='         	<img src="'+site_url+'images/doctor_image/'+data.upcomming.data[key].image+'"   class="img-reponsive img-rounded" />';
+				    appt_html +='       	</div>';
+				    appt_html +='       	<div class="col-7">';
+				    appt_html +='       		<b>Dr. '+data.upcomming.data[key].f_name+" "+data.upcomming.data[key].l_name+'</b><br/>';
+				    appt_html +='       		<small>'+data.upcomming.data[key].designation+'</small><br/>';
+				    appt_html +='       		<small>'+data.upcomming.data[key].title+'</small><br/>';
+				    appt_html +='       		<small>Rs '+data.upcomming.data[key].per_visit_change+'/-</small><br/>';	
+				    appt_html +='       	</div>';
+				    appt_html +='       	<div class="col-3 v-call">';
+				    appt_html +='				<a onclick="video_chat_call_patient('+ counter +')"><img src="images/v_chat_icon.png"/></a>';
+				    appt_html +='       	</div>';
+
+				    appt_html +='   	</div>';
+				    appt_html +='   	<div class="row doctors-link">';
+				    appt_html +='   		<div class="col-12">';
+				    appt_html +='   			<small><b>'+months_arr[data.upcomming.data[key].month]+' '+data.upcomming.data[key].day+', '+data.upcomming.data[key].year+'</b> @ <b>'+data.upcomming.data[key].time+'</b></small>';
+				    appt_html +='   		</div>';							       		
+				    appt_html +='   	<input type="hidden" id="appt_id_'+counter+'" value="'+data.upcomming.data[key].id+'" />';
+				    appt_html +='   	<input type="hidden" id="doc_id_'+counter+'" value="'+data.upcomming.data[key].doc_id+'" />';
+				    appt_html +='   	<input type="hidden" id="month_id_'+counter+'" value="'+data.upcomming.data[key].month+'" />';
+				    appt_html +='   	<input type="hidden" id="day_id_'+counter+'" value="'+data.upcomming.data[key].day+'" />';
+				    appt_html +='   	<input type="hidden" id="year_id_'+counter+'" value="'+data.upcomming.data[key].year+'" />';
+				    appt_html +='   	<input type="hidden" id="time_id_'+counter+'" value="'+data.upcomming.data[key].time+'" />';
+				    appt_html +='   	<input type="hidden" id="doctor_name_'+counter+'" value="Dr. '+data.upcomming.data[key].f_name+" "+data.upcomming.data[key].l_name+'" />';
+				    appt_html +='</li>';
+
+				   	counter ++;
+			 	}
+		    	appt_html +='</ul>';
+		    	$("#upcommong_appts").html(appt_html);
+		    }
+			else
+			{
+				var appt_html ='<div class="alert alert-danger" >';
+					appt_html += '<strong>Warning!</strong> '+data.upcomming.msg+'!!!';
+					appt_html += '</div>';
+				$("#err_msg").html(appt_html);
+		
+			}
+
+			if(data.previous.success)
+			{
+				var appt_html ='<ul class="list-group inner">';
+		    	for(var key in data.previous.data)
+			 	{
+			 		appt_html +='<li class="list-group-item">';
+	                appt_html +='	<div class="row doctor-details">';                    		
+	                appt_html +='    	<div class="col-2 doctors">';
+				    appt_html +='         	<img src="'+site_url+'images/doctor_image/'+data.previous.data[key].image+'"   class="img-reponsive img-rounded" />';
+				    appt_html +='       	</div>';
+				    appt_html +='       	<div class="col-10">';
+				    appt_html +='       		<b>Dr. '+data.previous.data[key].f_name+" "+data.previous.data[key].l_name+'</b><br/>';
+				    appt_html +='       		<small>'+data.previous.data[key].designation+'</small><br/>';
+				    appt_html +='       		<small>'+data.previous.data[key].title+'</small><br/>';
+				    appt_html +='       		<small>Fees: Rs '+data.previous.data[key].per_visit_change+'/-</small><br/>';
+				    appt_html +='       	</div>';
+				    
+				    appt_html +='   	</div>';
+				    appt_html +='   	<div class="row doctors-link">';
+				    appt_html +='   		<div class="col-12">';
+				    appt_html +='   			<small><b>'+months_arr[data.previous.data[key].month]+' '+data.previous.data[key].day+', '+data.previous.data[key].year+'</b> @ <b>'+data.previous.data[key].time+'</b></small>';
+				    appt_html +='   		</div>';				    
+				    appt_html +='   	</div>';
+				   	appt_html +='</li>';
+			 	}
+		    	appt_html +='</ul>';
+		    	$("#recent_appts").html(appt_html);
+			}
+			else
+			{
+				var appt_html ='<div class="alert alert-danger" >';
+					appt_html += '<strong>Warning!</strong> '+data.upcomming.msg+'!!!';
+					appt_html += '</div>';
+				$("#err_msg").html(appt_html);
+			}
+		})
+
+  		})
+  	</script> 	
+</body>
+</html> 

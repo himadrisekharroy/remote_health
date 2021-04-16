@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<script src="js/check-login.js"></script>
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style type="text/css">
+  	<style>
+		.top {
+			padding: 5px !important;
+		}
+		.middle
+		{
+			padding-top:90px !important;
+			height: 85vh;
+		}
+		.list-group-item-a
+		{
+			display: block;
+		    width: 85%;
+		    float: right;
+		    padding-top: 10px;
+		    text-decoration: none;
+		    font-weight: bold;
+		}
+		a:hover {
+      		text-decoration: none !important;
+    	}
+
+    	.doctor_selected{
+    		background-color: rgba(124, 230, 69, 0.55) !important;
+    	}
+    	.bottom_share{
+    		position: fixed;
+		    bottom: 0px;
+		    padding: 10px;
+		    display: block;
+		    width: 100%;
+		    text-align: center;
+		    z-index: 9;
+    		background-color: #fff;
+		}
+		.bottom_share .btn{
+			font-weight: bold !important;
+		}
+	</style>
+</head>
+  <body>
+  	
+  	<!--------------------------->
+<!--------- Page 40 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+	
+	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+	<a href="javascript:void(0)" id="user_images_show"><img src="images/no-doctor.png" width="50"></a>
+ 	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+	<a id="tans_to_physician">Physicians</a>
+	<!-- <a id="tans_to_nurse">Nurse</a>
+	<a id="tans_to_contact">Contact Us</a>
+	<a id="tans_to_feedback">Feedback</a>
+	<a id="tans_to_share">Share Remote Health</a>
+	<a id="tans_to_faq">FAQ</a>
+	<a id="tans_to_privacy">Privacy Policy</a>
+	<a id="tans_to_terms">Terms of use</a> -->
+	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+<div class="page7">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top" style="padding: 5px;">
+					<a class="float-left" style="width: 90%">Share With Doctors</a>
+					<a class="float-right" id="right_menu" style="width: 4%"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+			
+			<div class="row" id="seach_input">
+				<div class="col-sm-8 float-left" style="width: 90%; padding-left:0px; padding-right: 0px; ">
+					<input id="search_doctor" class="form-input" type="text" required="" placeholder="Search By Name / Title / Speciality" />
+				</div>
+				<div class="col-sm-2 float-right doctor_search_link" >
+					<a href=""><i class="fa fa-search " aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container search_container" style="display: none; height: 90vh;" id="search_content">
+			<div class="alert alert-warning" style="padding-top: 10px;">
+			  <strong>Search !!! </strong> Use Name, Designation, Mobile No, Email 
+			</div>
+		</div>
+
+		<div class="container" style="position: unset;" id="non_search_content">
+			<div class="row tab_container" id="physician_search_container">
+				<div class="col-sm-12" id="specialization_container">
+					<div style="width: 100%; text-align: center; padding-top: 100px;"> <img src="images/loading.gif"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bottom_share">
+	    <input type="button" class="btn btn-success" value="Share With Doctors" name="share_btn" id="share_btn">
+	    <b style="color:red; font-size:20px; display: none;" id="share_btn_wait">Please wait ...</b>
+	</div>
+
+	<div id="mask"></div>
+	
+</div>
+  </body>
+  <script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>  
+  	
+  	<script src="js/page40.js"></script>
+</html>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.remotehealth" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Badge">
+        <param name="android-package" value="de.appplant.cordova.plugin.badge.Badge" />
+    </feature>
+    <feature name="OpenTokPlugin">
+        <param name="android-package" value="com.tokbox.cordova.OpenTokAndroidPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="DatePickerPlugin">
+        <param name="android-package" value="com.plugin.datepicker.DatePickerPlugin" />
+    </feature>
+    <feature name="DateTimePicker">
+        <param name="android-package" value="com.alexanderploner.datetimepicker.DateTimePicker" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="FilePath">
+        <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="LocalNotification">
+        <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileChooser">
+        <param name="android-package" value="com.megster.cordova.FileChooser" />
+    </feature>
+    <name>Remote Health</name>
+    <description>
+        Connecting patients, provides and payers To bridge the gap in care
+    </description>
+    <author email="himadri.1111@gmail.com" href="himadri.rf.gd">
+        Himadri Sekhar Roy
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="www/res/icons/android/ldpi.png" />
+    <icon density="mdpi" src="www/res/icons/android/mdpi.png" />
+    <icon density="hdpi" src="www/res/icons/android/hdpi.png" />
+    <icon density="xhdpi" src="www/res/icons/android/xhdpi.png" />
+    <icon density="xxhdpi" src="www/res/icons/android/xxhdpi.png" />
+    <icon density="xxxhdpi" src="www/res/icons/android/xxxhdpi.png" />
+    <splash density="land-hdpi" src="www/res/screen/android/screen-hdpi-landscape.png" />
+    <splash density="land-ldpi" src="www/res/screen/android/screen-ldpi-landscape.png" />
+    <splash density="land-mdpi" src="www/res/screen/android/screen-mdpi-landscape.png" />
+    <splash density="land-xhdpi" src="www/res/screen/android/screen-xhdpi-landscape.png" />
+    <splash density="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
+    <splash density="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
+    <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
+    <splash density="port-xxhdpi" src="www/res/screen/android/screen-xxhdpi-portrait.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
+</widget>

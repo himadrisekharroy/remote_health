@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style type="text/css">
+  		.logo
+  		{
+  			display: block;
+  			height: auto;
+  			padding-top: 10px;
+  		}
+  		.login-button
+  		{
+  			text-align: center;
+  			margin-bottom: 10px;
+  		}
+  		.login-button .btn
+  		{
+  			width: 100%;
+    		border-radius: 30px;
+  		}
+  		.fp
+  		{
+  			background-color: #FFF;
+  			color: #9b113a;
+  			border:2px solid #9b113a;
+  		}
+  		.em
+  		{
+  			margin-top: 70px
+  		}
+  	</style>
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 5 ---------->
+<!--------------------------->
+<div class="page5">
+	<div class="top">
+		<a> &nbsp;<font>NURSE RESET PASSWORD</font></a>
+	</div>
+	<div class="middle">
+		<div class="logo">
+			<div>
+				<img src="images/icon.png">				
+			</div>
+			<div>Bridge the gap in care</div>
+		</div>
+		<div class="form-wrapper">
+				<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+				</div>
+				<div class="alert alert-warning" style="display: none;">
+				  <strong>Wait!</strong> Processing time.....
+				</div>
+			<form action="" class="form" method="post" id="doctor_pw_reset_form">
+		    	<div class="form-group em">
+		      		<label class="form-label" for="doctor_reset_email">Email</label>
+		      		<input id="doctor_reset_email" class="form-input" type="email" required="" />
+		    	</div>		    	
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="pw_reset_btn">RESET</button>
+		    	</div>
+		    	<div class="form-group login-button">
+		    		<button type="button" class="btn fp" id="bck_login_btn">LOGIN</button>
+		    	</div>
+		  </form>
+		</div>	
+	</div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 5 ---------->
+<!--------------------------->
+
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+	<script src="js/index.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script type="text/javascript">
+  		$("#bck_login_btn").click(function(){
+  			window.location.href="login-nurse43.html";
+  		})
+
+  		$("#doctor_pw_reset_form").submit(function(e){
+			e.preventDefault();
+			$(".alert").hide();
+
+			if(!$("#doctor_reset_email").val())
+			{
+				$(".alert-danger").html("<strong>Error!</strong> Email Cannot be blank!!! ").show();
+			}
+			else
+			{
+				$(".alert").hide();
+				$(".alert-warning").show();
+				$(".btn").hide();
+				$.post( api_url+"get_doctor_details.php", 
+				{ 
+					doctor_reset_email: $("#doctor_reset_email").val(),			
+					func:"nurse_reset_password"
+				})
+				.done(function( data ) {
+				    //alert( "Data Loaded: " + data );
+				    console.log(data);
+				    data = JSON.parse(data);
+
+				    $(".btn").show();
+				    $(".alert").hide();
+				    if(data.success)
+		    		{
+		    			$("#doctor_reset_email").val("");
+
+		    			$(".alert-success").html(" <strong>Success!</strong> "+ data.msg).show();
+		    		}
+		    		else
+		    		{
+
+		    			$(".alert-danger").html("<strong>Error!</strong>  "+data.msg).show();
+		    		}	
+				})
+			}
+		})
+  	</script>
+</body>
+</html>

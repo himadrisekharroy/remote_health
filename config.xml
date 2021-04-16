@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.remotehealth" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Remote Health</name>
+    <description>
+        Connecting patients, provides and payers To bridge the gap in care
+    </description>
+    <author email="rituparna04@gmail.com" href="www.ritzcybernetics.com">
+        Rituparna Biswas
+    </author>
+    <author email="himadri.1111@gmail.com" href="himadri.rf.gd">
+        Himadri Sekhar Roy
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="loadUrlTimeoutValue" value="700000" />
+        <icon density="ldpi" src="www/res/icons/android/ldpi.png" />
+        <icon density="mdpi" src="www/res/icons/android/mdpi.png" />
+        <icon density="hdpi" src="www/res/icons/android/hdpi.png" />
+        <icon density="xhdpi" src="www/res/icons/android/xhdpi.png" />
+        <icon density="xxhdpi" src="www/res/icons/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="www/res/icons/android/xxxhdpi.png" />
+        <splash density="land-hdpi" src="www/res/screen/android/screen-hdpi-landscape.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/screen-ldpi-landscape.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/screen-mdpi-landscape.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/screen-xhdpi-landscape.png" />
+        <splash density="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
+        <splash density="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
+        <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
+        <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
+        <splash density="port-xxhdpi" src="www/res/screen/android/screen-xxhdpi-portrait.png" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

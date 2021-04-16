@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<script src="js/check-login.js"></script> 
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 17 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+  	<a href="javascript:void(0)" id="user_images_show"></a>
+	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_practice">Add Practice</a>
+  	<a id="tans_to_physician">Physicians</a>
+  	<a id="tans_to_patients">Patients</a>
+  	<!-- <a id="tans_to_contact">Contact Us</a>
+  	<a id="tans_to_feedback">Feedback</a>
+  	<a id="tans_to_share">Share Remote Health</a>
+  	<a id="tans_to_faq">FAQ</a>
+  	<a id="tans_to_privacy">Privacy Policy</a>
+  	<a id="tans_to_terms">Terms of use</a> -->
+  	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page15">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left heading">SEND FEEDBACK</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container" style="position: unset;">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="logo" style="display: block; padding-top: 40px;">
+						<div>
+							<img src="images/icon.png">							
+						</div>
+						<div>Bridge the gap in care</div>
+					</div>
+				</div>
+			</div>
+			<form action="" class="form" id="feedback_form" method="post">
+				
+			<div class="row">
+				<div class="col-12 ">
+					<div class="form-wrapper">
+			<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+				</div>			
+						
+				
+		    	<div class="form-group">
+		      		<label class="form-label" for="feedback_subject">Subject</label>
+		      		<input id="feedback_subject" class="form-input" type="text" required="" />
+		    	</div>
+		    	
+		    	<div class="form-group">
+		      		<label class="form-label" for="feedback_comments">Comments</label>
+		      		<textarea class="form-input" rows="5" id="feedback_comments" style="padding-top: 10px"></textarea>
+		    	</div>
+
+		    	
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="feedback_submit_btn">Send Feedback</button>		    		
+		    	</div>
+		 
+		</div>	
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div id="mask"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 17 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script> 
+  	<script type="text/javascript">
+  		$("#feedback_form").submit(function(e){
+		e.preventDefault();
+		$("#feedback_submit_btn").prop('disabled', true);
+		$(".alert-success").slideUp();
+		$(".alert-danger").slideUp();
+		$.post( api_url+"feed_back_details.php", 
+		{ 
+			feedback_subject: $("#feedback_subject").val(), 
+			feedback_comments: $("#feedback_comments").val(),
+			user_id: storage.getItem("logged_user_id"),
+			user_type: 	storage.getItem("logged_user_type"),		
+			func:"feedback_submit"
+		})
+		.done(function(data){
+			console.log(data);
+		    data = JSON.parse(data);
+		    if(data.success)
+		    {
+		    	$(".alert-success").html("<strong>Success:</strong> "+ data.msg).slideDown();
+		    	$("#feedback_subject").val("");
+		    	$("#feedback_comments").val("");		    	
+		    }
+		    else
+		    {
+		    	$(".alert-danger").html("<strong>Error:</strong> "+ data.msg).slideDown();
+		    	
+		    	$("#feedback_submit_btn").prop('disabled', false);	    	
+		    }
+		})
+	})
+  	</script> 	
+</body>
+</html> 
+ 

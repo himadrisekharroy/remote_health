@@ -1,0 +1,297 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css">
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 6 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+ 	<a href="javascript:void(0)" id="user_images_show"></a>
+	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+ 	<a id="tans_to_convtime">Conversation Timing</a>
+ 	<a id="tans_to_conftime">Availibility Timing</a>
+ 	<a id="tans_to_practice">Add Practice</a>
+  	<a id="tans_to_physician">Physicians</a>
+  	<a id="tans_to_patients">Patients</a>
+  	<!-- <a id="tans_to_contact">Contact Us</a>
+  	<a id="tans_to_feedback">Feedback</a>
+  	<a id="tans_to_share">Share Remote Health</a>
+  	<a id="tans_to_faq">FAQ</a>
+  	<a id="tans_to_privacy">Privacy Policy</a>
+  	<a id="tans_to_terms">Terms of use</a> -->
+  	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+<div class="page8">
+	<div class="container top_section">
+		<div class="row">
+			<div class="col-sm-12 align-middle top">
+				<a class="float-left heading">Conversation Timing</a>
+				<a class="float-right" id="right_menu" style="width: 0%;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="form-wrapper">
+			<div class="alert alert-success" style="display: none;">
+			  	<strong>Success!</strong> Indicates a successful or positive action.
+			</div>
+			<div class="alert alert-danger" style="display: none;">
+				<strong>Error!</strong> Please Try again later.
+			</div>
+			<form action="" class="form" id="chat_time_form" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+		      		<label class="" style="font-size: 25px;" for="designation">Day</label>
+		      		<select class="form-input" id="day_id" name="day_id" required="">
+		      			<option value="">Please Select</option>
+		      			<option value="0">Sunday</option>
+		      			<option value="1">Monday</option>
+		      			<option value="2">Tuesday</option>
+		      			<option value="3">Wednesay</option>
+		      			<option value="4">Thursday</option>
+		      			<option value="5">Friday</option>
+		      			<option value="6">Saturday</option>		      			
+		      		</select>
+		    	</div>
+
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group focused">
+				      		<label class="form-label" for="start_time">Time (from)</label>
+				      		<input id="start_time" name="start_time" class="form-input" type="text" required="" />
+				    	</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group focused">
+				      		<label class="form-label" for="end_time">Time (to)</label>
+				      		<input id="end_time" name="end_time" class="form-input" type="text" required />
+				    	</div>
+					</div>
+				</div>
+				
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="time_submit_btn">Add</button>
+		    		
+		    	</div>	    	
+		  	</form>
+		</div>
+		<div style="width: 100%" id="timimg_container">
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-warning" >
+						<strong>Wait! </strong> System is processing.....
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="bottom">
+		
+	</div>
+</div>
+
+<!--------------------------->
+<!--------- Page 6 ---------->
+<!--------------------------->
+
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js></script>
+	<script src="js/index.js"></script>
+  	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script type="text/javascript">
+		$( document ).ready(function() {
+
+			$('#start_time').click(function(){
+				var options = {
+				    type: 'time'         // 'date' or 'time', required
+				};
+				 
+				window.DateTimePicker.pick(options, function (timestamp) {
+				    //window.alert(timestamp);
+				    var date = new Date(timestamp);
+				    var hours = "0" +  date.getHours();
+					var minutes = "0" + date.getMinutes();
+
+					var formattedTime = hours.substr(-2) + ':' + minutes.substr(-2) ;
+
+				    $('#start_time').val(formattedTime);
+				});
+			})
+
+			$('#end_time').click(function(){
+				var options = {
+				    type: 'time'         // 'date' or 'time', required
+				};
+				 
+				window.DateTimePicker.pick(options, function (timestamp) {
+				    //window.alert(timestamp);
+				    var date = new Date(timestamp);
+				    var hours = "0" + date.getHours();
+					var minutes = "0" + date.getMinutes();
+
+					var formattedTime = hours.substr(-2) + ':' + minutes.substr(-2) ;
+
+				    $('#end_time').val(formattedTime);
+				});
+			})
+
+			$("#time_submit_btn").click(function(e){
+				e.preventDefault();
+				var day_id = $("#day_id").val();
+				var start_time = $("#start_time").val();
+				var end_time = $("#end_time").val();
+				if(!day_id)
+				{
+					alert("Select Day...");
+				}
+				else if(! start_time)
+				{
+					alert("Select Chat Start time.");
+				}
+				else if(!end_time)
+				{
+					alert("Select Chat End time.");	
+				}
+				else{
+					$("#time_submit_btn").hide();
+					var waiting_html = '<div class="row">';
+					waiting_html += '<div class="col-12">';
+					waiting_html += '<div class="alert alert-warning" >';
+					waiting_html += '	<strong>Wait! </strong> System is processing.....';
+					waiting_html += '</div>';
+					waiting_html += '</div>';
+					waiting_html += '</div>	';
+
+					$("#timimg_container").html(waiting_html);
+
+					$.post( api_url+"get_text_chat_details.php", 
+						{
+							func: "save_chat_time", 
+							doc_id: storage.getItem("logged_user_id"),
+							day_id: day_id,
+							start_time: start_time,
+							end_time: end_time
+							})
+					.done(function(data){
+						$("#time_submit_btn").show();
+						data = JSON.parse(data);
+						if(data.success)
+						{
+							$(".alert-success").slideDown();
+							$(".alert-success").html('<strong>Success!</strong> '+data.msg);
+							$("#timimg_container").html("");
+							$("#day_id").val("");
+							$("#start_time").val("");
+							$("#end_time").val("");
+							loadTimimg();							
+							setTimeout(function(){ $(".alert-success").slideUp(); }, 6000);
+						}
+						else
+						{
+							$("#timimg_container").html("");
+							$(".alert-danger").slideDown();
+							$(".alert-danger").html('<strong>Oops!</strong> '+data.msg);
+							setTimeout(function(){ $(".alert-danger").slideUp(); }, 6000);
+						}
+						
+					})
+				}
+
+			})
+			
+			loadTimimg();
+
+			function loadTimimg()
+			{
+				$.post( api_url+"get_text_chat_details.php", {func: "get_chat_timimg_by_doc_id", doc_id: storage.getItem("logged_user_id")})
+					.done(function(data){
+					console.log(data);
+			 		data = JSON.parse(data);
+			 		if(data.success)
+			 		{
+			 		var htmlStr = "";
+			 		for(var key in data.data)
+					{
+						var timimgStr = [];
+						for(var inner_key in data.data[key])
+						{
+							var start_time = data.data[key][inner_key].start_time ;
+							var end_time = data.data[key][inner_key].end_time;
+
+							start_time = start_time.split(":").slice(0,-1).join(':');
+							end_time = end_time.split(":").slice(0,-1).join(':');
+
+							
+							var set = start_time +" - "+ end_time;
+							timimgStr.push(set);
+						}
+
+						timimgStr = timimgStr.join("<br/>");
+
+						htmlStr += '<div class="row" >';
+						htmlStr +=	'<div class="col-12">';
+						htmlStr +=		'<ul class="list-group inner">';
+						htmlStr +=			'<li class="list-group-item" >';
+						htmlStr += 				'<div class="row" style="color:#9b113a;">';
+						htmlStr +=					'<div class="col-4"><b style="text-transform:uppercase;">'+getWeekDay(key)+': </b></div>';
+						htmlStr +=					'<div class="col-8 text-right"> '+timimgStr+'</div>';
+						htmlStr += 				'</div>';						
+						htmlStr +=			'</li>';
+						htmlStr +=		'</ul>';
+						htmlStr +=	'</div>';
+						htmlStr += '</div>';
+					}
+					$("#timimg_container").html(htmlStr);
+			 		}
+			 		else
+					{
+						$("#timimg_container").html("");
+						$(".alert-danger").slideDown();
+						$(".alert-danger").html('<strong>Oops!</strong> '+data.msg);
+						setTimeout(function(){ $(".alert-danger").slideUp(); }, 6000);
+					}
+
+			 		
+				});
+			}
+		})
+		function getWeekDay(day){
+			    
+		    var weekdays = new Array(
+		        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+		    );
+		    
+		    //var day = date.getDay();
+		    
+		    return weekdays[day];
+		}
+  	</script>
+
+</body>
+</html>
+ 

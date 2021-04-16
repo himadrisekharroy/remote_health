@@ -1,0 +1,112 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+  	<style type="text/css">
+  		.logo
+  		{
+  			display: block;
+  			height: auto;
+  			padding-top: 10px;
+  		}
+  		.login-button
+  		{
+  			text-align: center;
+  			margin-bottom: 10px;
+  		}
+  		.login-button .btn
+  		{
+  			width: 100%;
+    		border-radius: 30px;
+  		}
+  		.fp
+  		{
+  			background-color: #FFF;
+  			color: #9b113a;
+  			border:2px solid #9b113a;
+  		}
+  		</style>
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 5 ---------->
+<!--------------------------->
+<div class="page5">
+	<div class="top">
+		<a id="back_to_index3"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;<font>MEMBER LOG IN</font></a>
+	</div>
+	<div class="middle">
+		
+  		<div class="logo">
+			<div>
+				<img src="images/icon.png">				
+			</div>			
+		</div>
+		<div class="form-wrapper">
+				<div class="alert alert-success" style="display: none;">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+				<div class="alert alert-danger" style="display: none;">
+				  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+				</div>
+				<div class="alert alert-warning" style="display: none;">
+				  <strong>Wait!</strong> Processing time.....
+				</div>
+			<form action="" class="form" method="post" id="user_login_form">
+		    	<div class="form-group">
+		      		<label class="form-label" for="user_login_email">Mobile Number</label>
+		      		<input id="user_login_email" class="form-input" type="tel" required="" />
+		    	</div>
+		    	<div class="form-group" style="margin-bottom: 10px;">
+		      		<label class="form-label" for="user_login_password">Password</label>
+		      		<input id="user_login_password" class="form-input" type="password" required="" />
+		    	</div>
+		    	<div class="form-group login-button">
+		    		<button type="submit" class="btn  btn-danger" id="doctor_login_btn">LOG IN</button>		    		
+		    	</div>
+		    	<div class="form-group login-button">
+		    		<button type="button" class="btn fp" id="forgot_password_btn">FORGOT PASSWORD</button>
+		    	</div>
+		  </form>
+		</div>	
+	</div>
+	<div class="bottom">
+		<div class="bottom-left" style="width: 20%;"></div>
+		<div class="bottom-right" style="width: 80%;">
+			<!-- <a id="tans_to_signup_btn"><font>SIGN UP</font> &nbsp; <i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
+			<a id="tans_to_doc_login_btn"><font>LOGIN AS DOCTOR</font> &nbsp; <i class="fa fa-chevron-right" aria-hidden="true"></i></a>			
+	</div>
+</div>
+
+<!--------------------------->
+<!--------- Page 5 ---------->
+<!--------------------------->
+
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+	<script src="js/index.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script type="text/javascript">
+  		$("#forgot_password_btn").click(function(){
+  			window.location.href="forgot_pw_user38.html";
+  		})
+  	</script>
+</body>
+</html>

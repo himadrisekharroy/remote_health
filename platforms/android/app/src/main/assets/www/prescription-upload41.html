@@ -1,0 +1,127 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 10 ---------->
+<!--------------------------->
+<div id="mySidenav" class="sidenav">
+  	<a href="javascript:void(0)" class="closebtn" >&times;</a>
+ 	<a href="javascript:void(0)" id="doctor_images_show"><img src="images/no-doctor.png" width="50"></a>
+ 	<a href="javascript:void(0)">Welcome <b id="user_name_show">&nbsp; </b></a> 
+ 	<a id="tans_to_my_profile">My Profile</a>
+ 	<a id="tans_to_change_password">Change Password</a>
+ 	<a id="tans_to_convtime">Conversation Time</a>
+ 	<a id="tans_to_conftime">Availibility Time</a>
+ 	<!-- <a id="tans_to_practice">Add Practice</a>
+ 	<a id="tans_to_nurse">Nurse</a> -->
+	<a id="tans_to_patients">Patients</a>
+	<!-- <a id="tans_to_contact">Contact Us</a>
+	<a id="tans_to_feedback">Feedback</a>
+	<a id="tans_to_share">Share Remote Health</a>
+	<a id="tans_to_faq">FAQ</a>
+	<a id="tans_to_privacy">Privacy Policy</a>
+	<a id="tans_to_terms">Terms of use</a> -->
+	<a id="signout_link" style="color: red !important">Signout</a>
+</div>
+
+	<div class="page10">
+		<div class="container top_section">
+			<div class="row">
+				<div class="col-sm-12 align-middle top">
+					<a class="float-left" id="back_to_doctor_page27" style="width: 90%;"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;Patient Info</a>
+					<a class="float-right" id="right_menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	<div class="middle">
+		<div class="container" style="position: unset; " id="loading_screen">
+			<div style="width: 100%; text-align: center; padding-top: 100px;"> <img src="images/loading.gif"></div>
+		</div>
+		<div class="container" style="position: unset; display: none;" id="content_screen">
+			<div class="row" style="padding-top: 5px;">
+				<div class="col-6 text-center">
+					<img id="user_img" src="images/docx.jpg" class="img-reponsive img-rounded" style="width: 100px;">
+				</div>
+				<div class="col-16 text-left ">
+					<b id="user_name" style="text-transform: uppercase;">Dr. Lorem Ipsum</b> <br/>
+					<small id="mobile"></small><br/>
+					<small id="email"></small><br/>
+					<small id="sex"></small><br/>
+					<small id="age"></small>
+				</div>
+			</div>
+
+			<div class="row doc-addr" >
+				<div class="col-12 text-center" id="read_all_reviews">
+					<a href="" style="color:#9b113a;" id="view_review"><b>Upload Prescription / Medications / Advices</b></a>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-6" id="">
+					<div class="button1">
+						<a href="jacascript:void(0)" id="imageCapture" style="padding: 0px;"> Capture</a>
+					</div>
+				</div>
+				<div class="col-6" id="">
+					<div class="button1">
+						<a href="javascript:void(0)" id="imageUpload" style="padding: 0px;"> Browse</a>
+					</div>
+				</div>
+				<input type="hidden" name="app_id" id="app_id">
+			</div>
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-12">
+					<div class="alert alert-success" style="display: none;">
+					  <strong>Success!</strong> Indicates a successful or positive action.
+					</div>
+					<div class="alert alert-danger" style="display: none;">
+					  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+					</div>
+					<div class="alert alert-warning" style="display: none;">
+					  <strong>Wait!</strong> Processing time.....
+					</div>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 10px;" >
+				<div class="col-12" id="pres_link">
+					&nbsp;
+				</div>
+			</div>
+		</div>		
+
+	</div>
+	<div id="mask"></div>	
+</div>
+
+<!--------------------------->
+<!--------- Page 9 ---------->
+<!--------------------------->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script src="js/page41.js"></script>  	
+</body>
+</html> 

@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+ 	<title>Remote Health</title>
+  	<meta name="description" content="Remote Health">
+  	<meta name="author" content="Rituparna">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+<!--------------------------->
+<!--------- Page 1 ---------->
+<!--------------------------->
+<div class="page1">
+	<div class="middle">
+		<div class="logo">
+			<div>
+				<img src="images/icon.png">
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------------------------->
+<!--------- Page 1 ---------->
+<!--------------------------->
+
+
+
+	 <script type="text/javascript" src="cordova.js"></script>
+
+  
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="kendo/js/kendo.mobile.min.js"></script>
+	<script src="css/bootstrap-4.1.2/popper.js"></script>
+	<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="owlcarousel/owl.carousel.js"></script>
+  	<script src="js/scripts.js"></script>
+  	<script type="text/javascript">
+  		var storage = window.localStorage;
+        var user_id = storage.getItem("logged_user_id"); 
+        var user_type = storage.getItem("logged_user_type");
+console.log(user_id);
+console.log(user_type);
+
+        setTimeout(function(){
+			    if(user_id)
+		        {
+		        	if(user_type == 'd')
+		        	{
+						window.location.href="doctor_page27.html";
+		        	}
+		        	else if(user_type == 'jd')
+		        	{
+						window.location.href="doctor_page27.html";
+		        	}
+		        	else if(user_type == 'jn')
+		        	{
+						window.location.href="doctor_page27.html";
+		        	}
+		        	else if(user_type == 'sn')
+		        	{
+						window.location.href="doctor_page27.html";
+		        	}
+		        	else 
+		        	{
+		        		window.location.href="user_page7.html";
+		        	}
+		           
+		       	}
+		       	else
+		       		window.location.href="index1.html";
+			}, 2000);
+       
+  	</script>
+</body>
+</html>
